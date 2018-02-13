@@ -56,13 +56,25 @@ hive> CREATE DATABASE [IF NOT EXISTS] userdb;
 SHOW DATABASES;
 ```
 ## Drop Database
+
 ```hive
 DROP DATABASE StatementDROP (DATABASE|SCHEMA) [IF EXISTS] database_name 
 [RESTRICT|CASCADE];
 hive> DROP DATABASE IF EXISTS userdb;
 ```
+
 The following query drops the database using CASCADE. It means dropping respective tables before dropping the database.
+
 ```hive
 hive> DROP DATABASE IF EXISTS userdb CASCADE;
 ```
-
+## Create Table
+```hive
+CREATE TABLE IF NOT EXISTS employee (eid int, name string,
+salary float, destination string)
+COMMENT ‘Employee details’
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ‘\t’
+LINES TERMINATED BY ‘\n’
+STORED AS TEXTFILE;
+```
