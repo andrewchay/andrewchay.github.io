@@ -1,3 +1,6 @@
 # This is the notes on Hadoop Hive.
 ## Hive Data Types
-1. **Customer Segmentation** .
+### Column Types
+1. **Integer Types**.
+|Type|PostFix|
+|INT|-|
