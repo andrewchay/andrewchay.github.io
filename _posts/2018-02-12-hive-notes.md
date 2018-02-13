@@ -49,3 +49,9 @@ Maps in Hive are similar to Java Maps. Syntax: MAP<primitive_type, data_type>
 Structs in Hive is similar to using complex data with comment. Syntax: STRUCT<col_name : data_type [COMMENT col_comment], ...>
 
 ## Create Database
+A database in Hive is a namespace or a collection of tables. The syntax for this statement is as follows:
+```hive
+CREATE DATABASE|SCHEMA [IF NOT EXISTS] <database name>
+hive> CREATE DATABASE [IF NOT EXISTS] userdb;
+SHOW DATABASES;
+```
