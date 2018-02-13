@@ -35,9 +35,11 @@ Floating point types are nothing but numbers with decimal points. Generally, thi
 Decimal type data is nothing but floating point value with higher range than DOUBLE data type. The range of decimal type is approximately -10-308 to 10308.
 
 ### NULL
+
 Missing value is saved as NULL.
 
 ### Complex Types 
+
 The Hive complex data types are as follows:
 1. **Arrays**.
 Arrays in Hive are used the same way they are used in Java. Syntax: ARRAY<data_type>
@@ -45,3 +47,5 @@ Arrays in Hive are used the same way they are used in Java. Syntax: ARRAY<data_t
 Maps in Hive are similar to Java Maps. Syntax: MAP<primitive_type, data_type>
 3. **Structs**.
 Structs in Hive is similar to using complex data with comment. Syntax: STRUCT<col_name : data_type [COMMENT col_comment], ...>
+
+## Create Database
