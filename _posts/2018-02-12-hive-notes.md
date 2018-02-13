@@ -27,13 +27,16 @@ UNIONTYPE<int, double, array<string>, struct<a:int,b:string>>
 {0:9} 
 {1:10.0}
 ```
+
 ### Literals
 1. **Floating Point Types**.
 Floating point types are nothing but numbers with decimal points. Generally, this type of data is composed of DOUBLE data type.
 2. **Decimal Type**.
 Decimal type data is nothing but floating point value with higher range than DOUBLE data type. The range of decimal type is approximately -10-308 to 10308.
+
 ### NULL
 Missing value is saved as NULL.
+
 ### Complex Types 
 The Hive complex data types are as follows:
 1. **Arrays**.
