@@ -92,4 +92,10 @@ There are two ways to load data into hive. One is from local file system or from
 LOAD DATA LOCAL INPATH '/home/user/sample.txt'
 OVERWRITE INTO TABLE employee;
 ```
+## Alter Table
+## Drop Table
+## Partitioning
+## Built-in Operators
+## Built-in Functions
+## Views and Indices
 
