@@ -72,9 +72,9 @@ hive> DROP DATABASE IF EXISTS userdb CASCADE;
 ```hive
 CREATE TABLE IF NOT EXISTS employee (eid int, name string,
 salary float, destination string)
-COMMENT ‘Employee details’
+COMMENT 'Employee details'
 ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ‘\t’
-LINES TERMINATED BY ‘\n’
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
 STORED AS TEXTFILE;
 ```
