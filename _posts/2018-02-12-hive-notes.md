@@ -78,3 +78,18 @@ FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\n'
 STORED AS TEXTFILE;
 ```
+### Load Data
+There are two ways to load data into hive. One is from local file system or from Hadoop file system. We can save the data in a text file and load them as follows.
+```hive
+1201  Gopal       45000    Technical manager
+1202  Manisha     45000    Proof reader
+1203  Masthanvali 40000    Technical writer
+1204  Kiran       40000    Hr Admin
+1205  Kranthi     30000    Op Admin
+```
+
+```hive
+LOAD DATA LOCAL INPATH '/home/user/sample.txt'
+OVERWRITE INTO TABLE employee;
+```
+
