@@ -93,6 +93,14 @@ LOAD DATA LOCAL INPATH '/home/user/sample.txt'
 OVERWRITE INTO TABLE employee;
 ```
 ## Alter Table
+```hive
+ALTER TABLE name RENAME TO new_name
+ALTER TABLE name ADD COLUMNS (col_spec[, col_spec ...])
+ALTER TABLE name DROP [COLUMN] column_name
+ALTER TABLE name CHANGE column_name new_name new_type
+ALTER TABLE name REPLACE COLUMNS (col_spec[, col_spec ...])
+```
+
 ## Drop Table
 ## Partitioning
 ## Built-in Operators
