@@ -102,8 +102,37 @@ ALTER TABLE name REPLACE COLUMNS (col_spec[, col_spec ...])
 ```
 
 ## Drop Table
+```hive
+DROP TABLE [IF EXISTS] table_name;
+```
 ## Partitioning
+```hive
+ALTER TABLE table_name ADD [IF NOT EXISTS] PARTITION partition_spec
+[LOCATION 'location1'] partition_spec [LOCATION 'location2'] ...;
+
+ALTER TABLE employee
+ADD PARTITION (year=’2013’)
+location '/2012/part2012';
+
+ALTER TABLE table_name DROP [IF EXISTS] PARTITION partition_spec, PARTITION partition_spec,...;
+```
 ## Built-in Operators
+### Relational Operators
+### Arithmetic Operators
+### Logical Operators
+### Complex Operators
+
 ## Built-in Functions
+```hive 
+round(double a)
+rand(), rand(int seed)
+concat(string A, string B,...)
+substr(string A, int start, int length)
+trim(string A)
+size(Map<K.V>)
+size(Array<n>)
+to_date("1970-01-01 00:00:00") = "1970-01-01"
+get_json_object(string json_string, string path)
+```
 ## Views and Indices
 
