@@ -21,3 +21,15 @@ Depending on the existence of the three components, different RL agents can be c
 
 ## Balance between exploration and exploitation
 Exploration finds more information about the environment. Exploitation maximizes the reward given the known information. This is like the balance between model interpretability and predictability. 
+
+# Lecture 2 Markov Decision Process
+## Markov Reward Process
+The Markov reward process consists of (S, P, R, gamma). Here S is the state space. P is the transition matrix from S to S. R(s) is the expected reward at time t + 1 when the state at time t is s. gamma is the discount factor.
+Define return G(t) = R(t + 1) + gamma * R(t + 2) + ...
+Value function v(s) = E(G(t)|S(t) = s), which is the expected long term return.
+
+## Bellman Equation for MRP
+The matrix form of Bellman equation is (1 - gamma * P) * v = R
+
+## Markov Decision Process
+Markov decision process adds the action A into Markov reward process. 
