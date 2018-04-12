@@ -13,9 +13,9 @@ H(t) = O(1), R(1), A(1), ..., O(t), R(t)
 S(t) = f(H(t))
 
 ## Three components of agents
-1. Policy is the mapping from state to action
-2. Value is the expected future reward
-3. Model is the understanding of what the environment going to do next
+1. ***Policy*** is the mapping from state to action
+2. ***Value*** is the expected future reward
+3. ***Model*** is the understanding of what the environment going to do next
 
 Depending on the existence of the three components, different RL agents can be constructed.
 
