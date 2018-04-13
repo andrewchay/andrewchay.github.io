@@ -33,3 +33,23 @@ The matrix form of Bellman equation is (1 - gamma * P) * v = R
 
 ## Markov Decision Process
 Markov decision process adds the action A into Markov reward process. 
+A policy pi is a distribution over actions given states, pi(a|s) = P(A(t) = a | S(t) = s).
+
+## Value Function
+### State Value Function
+v_pi(s) = E_pi(G(t) | S(t) = s)
+### Action Value Function
+q_pi(s, a) = E_pi(G(t) | S(t) = s, A(t) = a)
+
+Hence the Bellman expectation equation for MDP is 
+v_pi(s) = E_pi(R(t + 1) + gamma * v_pi(S(t + 1)|S(t) = s). 
+q_pi(s, a) = E_pi(R(t + 1) + gamma * q_pi(S(t + 1), A(t + 1)|S(t) = s, A(t) = a).
+
+v_pi(s) and q_pi(s, a) satisfies the two equations:
+1. v_pi(s) = \sum_{a in A} pi(a|s) q_pi(s, a);
+2. q_pi(s, a) = R_s^a + gamma * \sum_{s' in S}P_ss'^a * v_pi(s')
+
+Recursively, v_pi = R^pi + gamma * P^pi * v_pi.
+
+The optimal state-value function v_ * (s) = max_pi v_pi(s). q_ * (s, a) = max_pi q_pi(s, a). The optimal policy is a policy that is better than or equal to all other policies in terms of v_pi(s) >= v_pi'(s) for any s. Then
+v_ * (s) = max_a q_ * (s, a), q_ * (s, a) = R^a_s + gamma * \sum_{s' in S} P^a_ss' v_ * (s').
