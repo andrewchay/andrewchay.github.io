@@ -49,7 +49,10 @@ v_pi(s) and q_pi(s, a) satisfies the two equations:
 1. v_pi(s) = \sum_{a in A} pi(a|s) q_pi(s, a);
 2. q_pi(s, a) = R_s^a + gamma * \sum_{s' in S}P_ss'^a * v_pi(s')
 
-Recursively, v_pi = R^pi + gamma * P^pi * v_pi.
+Recursively, v_pi = R^pi + $\gamma$ * P^pi * $v_pi$.
 
 The optimal state-value function v_ * (s) = max_pi v_pi(s). q_ * (s, a) = max_pi q_pi(s, a). The optimal policy is a policy that is better than or equal to all other policies in terms of v_pi(s) >= v_pi'(s) for any s. Then
 v_ * (s) = max_a q_ * (s, a), q_ * (s, a) = R^a_s + gamma * \sum_{s' in S} P^a_ss' v_ * (s').
+
+# Lecture 3 Planning by Dynamic Programming
+
