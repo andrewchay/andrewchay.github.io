@@ -86,4 +86,19 @@ If we know the solution to subproblems v_ * (s'), then value iteration can be fo
 ### Contraction Mappting Theorem
 
 Essentially Bellman expectation equation is a contraction mapping defined on state space and action space as long as gamma < 1. Hence it guarantees convergence to the unique best value.
-2. 
+
+# Lecture 4 Model Free Prediction
+This lecture talks about how to estimate the value function for an unknown MDP.
+
+## Monte-Carlo Method
+MC learns directly from complete episodes. It does not require the prior information of MDP. By law of large numbers, the MC mean will converge to the true value. All episodes must terminate in order to compute the mean.
+
+At each time t, Monte-Carlo method calculate G(t) = R(t + 1) + gamma * R(t + 2) + ... + gamma ^ (T - 1) * R(T). Then v_pi(s) at state s can be calculated not using expectation but Monte-Carlo simulation. V(S(t)) = V(S(t)) + alpha * (G(t) - V(S(t))).
+
+
+## Temporal-Difference Method
+TD learns from incomplete episodes by bootstrapping. TD updates a guess towards a guess. When compared to MC method, TD(0) method updates V(S(t)) by replacing G(t) by R(t + 1) + gamma * V(S(t + 1)). This is a one-step approximation of G(t) when the full episode is not known. Hence TD can work in non-terminating environments.
+
+When comparing TD against MC, TD introduces some bias but reduces variance by a lot. The reason is TD depends on one random action, where as MC depends on many random actions and rewards.
+
+## TD(lambda)
