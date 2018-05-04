@@ -102,3 +102,42 @@ TD learns from incomplete episodes by bootstrapping. TD updates a guess towards 
 When comparing TD against MC, TD introduces some bias but reduces variance by a lot. The reason is TD depends on one random action, where as MC depends on many random actions and rewards.
 
 ## TD(lambda)
+### Forward View
+TD(0) method utilizes one step look forward. It could be extended to multiple steps look forward naturally. TD(lambda) is a weighted average of these look forwards. Specifically, define G^(n)(t) = R(t + 1) + gamma * R(t + 2) + ... + gamma ^ (n - 1) * R(t + n) + gamma ^ n * V(S(t + n)), and G^lambda(t) = (1 - lambda) sum_{n = 1} ^ inf lambda ^ (n - 1) G^(n)(t). V(S(t)) = V(S(t)) + alpha * (G^lambda(t) - V(S(t))).
+
+### Backward View
+Forward view provides theory, whereas backward view provides mechanism. E_0(s) = 0, E_t(s) = gamma * lambda * E_{t - 1}(s) + I(S(t) = s). This is called the eligibility trace. V(S(t)) = V(S(t)) * alpha * delta(t) * E_t(s), where delta(t) = R(t + 1) + gamma * V(S(t + 1)) - V(S(t)).
+
+Backward view and forward view of TD(lambda) is equivalent when the update is offline. In practice, Exact Online update is equivalent to forward view.
+
+
+# Model-Free Control
+## On-Policy Learning
+Learn about policy pi from experience sampled from pi.
+
+Greedy policy improvement over V(s) requires model of MDP. Greedy policy improvement over Q(s, a) is model-free.
+
+e-Greedy exploration method is as follows:
+pi(a|s) = e / m + 1 - e if a is the greedy policy, or e / m if otherwise. This ensures the continual exploration. 
+
+Greedy in the Limit with Infinite Exploration (GLIE) property: All state-action pairs are explored infinitely many times as the number of episodes goes to infinity and the limit of policy converges on a greedy policy. This property ensures all state-action pairs are explored and the convergence of the greedy policy. e-greedy is GLIE if e_k = 1 / k where k is the index for episodes.
+
+Since TD control covers MC control as a special case, only TD control is noted in this notes. And the algorithm is called state-action-reward-state-action (SARSA), which is used to update Q(S, A) as Q(S, A) = Q(S, A) + alpha * (R + gamma * Q(S', A') - Q(S, A)). The algorithm goes as follows:
+
+1. Initialize Q(s, a) for all s, a arbitrarily and Q(terminal-state, .) = 0.
+2. Repeat (for each episode):
+3.   E(s, a) = 0 for all s, a
+4.   Initialize S
+5.   Choose A from S using policy derived from Q (ie, e-greedy).
+6.   Repeat (for each step of episode):
+7.     Take action A, observe R, S'
+8.     Choose A' from S' using policy derived from Q (ie, e-greedy)
+9.     delta = R + gamma * Q(S', A') - Q(S, A)
+10.    E(S, A) = E(S, A) + 1
+11.    For all s, a:
+12.       Q(s, a) = Q(s, a) + alpha * delta * E((s, a))
+13.       E(s, a) = gamma * lambda * E(s, a)
+8      S = S', A = A'
+9.   until S is terminal
+
+Sarsa converges  to the optimal action as long as alpha(t) satisfies sum of alpha(t) = infinity and sum of alpha(t) ^ 2 < infinity, and GLIE sequence of policies pi_t(a|s)
