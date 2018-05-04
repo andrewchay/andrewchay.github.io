@@ -137,7 +137,23 @@ Since TD control covers MC control as a special case, only TD control is noted i
 11.    For all s, a:
 12.       Q(s, a) = Q(s, a) + alpha * delta * E((s, a))
 13.       E(s, a) = gamma * lambda * E(s, a)
-8      S = S', A = A'
-9.   until S is terminal
+14.      S = S', A = A'
+15.  until S is terminal
 
 Sarsa converges  to the optimal action as long as alpha(t) satisfies sum of alpha(t) = infinity and sum of alpha(t) ^ 2 < infinity, and GLIE sequence of policies pi_t(a|s)
+
+## Off-Policy Learning
+Off-policy learning learns from other policy than the target policy pi. This is important because we can use it to learn from human agents, reuse experience generated from old policies, learn about optimal policy while following exploratory policy, or learn about multiple policy while following one policy. 
+
+### Q-Learning
+Consider the Q(s, a), behavior policy mu and alternative policy pi. The behavior policy mu is e-greedy w.r.t. Q(s, a). The target policy pi is greedy w.r.t. Q(s, a). Then the Q-learning target simplies to R(t + 1) + gamma * max_{a'} Q(S(t + 1), a').  
+
+1. Initialize Q(s, a) for all s, a arbitrarily and Q(terminal-state, .) = 0.
+2. Repeat (for each episode):
+3.   Initialize S
+4.   Repeat (for each step of episode):
+5.     Choose A from S using policy derived from Q (ie, e-greedy).
+6.     Take action A, observe R, S'
+7.    Q(S, A) = Q(S, A) + alpha * (R + gamma * max_{a'}Q(S', a') - Q(S, A))
+8.    S = S'
+9.   until S is terminal
